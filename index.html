@@ -220,10 +220,58 @@
 }
 
 
-  footer {
-    padding: 20px 5%;
-  }
-}
+
+    /* WHO I AM section */
+    .about-section {
+      display: grid;
+      grid-template-columns: 1fr 0.85fr;
+      align-items: center;
+      gap: 60px;
+      max-width: 900px;
+      margin: 100px auto 60px;
+    }
+
+    .about-text {
+      max-width: 420px;
+    }
+
+    .about-text h2 {
+      margin: 0 0 24px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+    }
+
+    .about-text p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    .about-image {
+      width: 100%;
+      max-width: 320px;
+      justify-self: end;
+    }
+
+    .about-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    @media (max-width: 600px) {
+      .about-section {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        margin: 60px auto 40px;
+      }
+
+      .about-image {
+        max-width: 100%;
+        justify-self: start;
+      }
+    }
 
   </style>
 </head>
