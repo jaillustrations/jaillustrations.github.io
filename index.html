@@ -42,13 +42,16 @@
     }
 
     .site-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 27px 6%;
-      border-bottom: 1px solid var(--line);
-    }
-
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 27px 6%;
+  border-bottom: 1px solid var(--line);
+  background: var(--background);
+}
     .logo {
       font-size: 17px;
       font-weight: 600;
