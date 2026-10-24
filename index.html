@@ -97,10 +97,45 @@
     }
 
     .art-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 34px 22px;
-    }
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 42px 20px;
+  align-items: start;
+}
+
+/* A3 artworks: larger featured pieces */
+.artwork:nth-child(-n + 3) {
+  grid-column: span 2;
+  min-width: 0;
+}
+
+/* A4 artworks: smaller supporting pieces */
+.artwork:nth-child(n + 4) {
+  grid-column: span 2;
+  min-width: 0;
+}
+
+/* Editorial arrangement */
+.artwork:nth-child(2) {
+  margin-top: 65px;
+}
+
+.artwork:nth-child(3) {
+  margin-top: 120px;
+}
+
+.artwork:nth-child(4) {
+  grid-column: 2 / span 2;
+  margin-top: 10px;
+}
+
+.artwork:nth-child(5) {
+  margin-top: 75px;
+}
+
+.artwork:nth-child(6) {
+  margin-top: 25px;
+}
 
     .artwork {
   min-width: 0;
@@ -186,50 +221,78 @@
       letter-spacing: 0.08em;
     }
 
-    @media (max-width: 800px) {
-      .art-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 25px 14px;
-      }
+    
+@media (max-width: 800px) {
+  .art-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px 14px;
+  }
 
-      main {
-        padding-top: 34px;
-      }
-    }
+  .artwork:nth-child(-n + 3),
+  .artwork:nth-child(n + 4) {
+    grid-column: span 1;
+    margin-top: 0;
+  }
 
-    @media (max-width: 480px) {
-      .site-header {
-        padding: 22px 5%;
-      }
+  .artwork:nth-child(3) {
+    grid-column: 1 / -1;
+    width: 75%;
+    justify-self: center;
+  }
 
-      .logo {
-        font-size: 14px;
-      }
+  .artwork:nth-child(4) {
+    grid-column: span 1;
+  }
 
-      nav {
-        gap: 14px;
-        font-size: 10px;
-      }
+  main {
+    padding-top: 34px;
+  }
+}
 
-      main {
-        padding: 28px 5% 48px;
-      }
+@media (max-width: 480px) {
+  .art-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
 
-      .section-heading {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 9px;
-      }
+  .artwork:nth-child(3) {
+    grid-column: auto;
+    width: 100%;
+  }
 
-      .artwork-caption {
-        flex-direction: column;
-        gap: 4px;
-      }
+  .site-header {
+    padding: 22px 5%;
+  }
 
-      footer {
-        padding: 20px 5%;
-      }
-    }
+  .logo {
+    font-size: 14px;
+  }
+
+  nav {
+    gap: 14px;
+    font-size: 10px;
+  }
+
+  main {
+    padding: 28px 5% 48px;
+  }
+
+  .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 9px;
+  }
+
+  .artwork-caption {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  footer {
+    padding: 20px 5%;
+  }
+}
+
   </style>
 </head>
 
