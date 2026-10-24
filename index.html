@@ -107,8 +107,10 @@
 .art-grid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 40px 20px;
+  gap: 32px 18px;
   align-items: start;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .artwork {
@@ -117,14 +119,13 @@
 
 /* A3 artworks get more space */
 .art-a3 {
-  grid-column: span 4;
+  grid-column: span 3;
 }
 
 /* A4 artworks get less space */
 .art-a4 {
   grid-column: span 3;
 }
-
 /* Subtle offsets for an organic gallery layout */
 .stagger-1 {
   margin-top: 0;
