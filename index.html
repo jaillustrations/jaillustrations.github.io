@@ -107,7 +107,7 @@
 .art-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 35px 24px;
+  gap: 32px 24px;
   align-items: start;
   max-width: 1000px;
   margin: 0 auto;
@@ -116,47 +116,29 @@
 .artwork {
   min-width: 0;
   width: 100%;
-  max-width: 180px;
+  max-width: 220px;
   justify-self: center;
 }
 
-/* A3 artworks get more space */
-.art-a3 {
-  grid-column: span 1;
-}
-
-/* A4 artworks get less space */
+.art-a3,
 .art-a4 {
   grid-column: span 1;
-}
-/* Subtle offsets for an organic gallery layout */
-.stagger-1 {
   margin-top: 0;
-}
-
-.stagger-2 {
-  margin-top: 45px;
-}
-
-.stagger-3 {
-  margin-top: 90px;
-}
-  margin-top: 35px;
 }
 
 .artwork img {
   display: block;
   width: 100%;
   height: auto;
-  background: #eae5da;
+  object-fit: contain;
 }
 
 .artwork-caption {
   display: flex;
   justify-content: space-between;
-  gap: 12px;
-  padding-top: 12px;
-  font-size: 12px;
+  gap: 8px;
+  padding-top: 10px;
+  font-size: 11px;
 }
 
 .artwork-caption span:last-child {
@@ -165,65 +147,24 @@
 
 @media (max-width: 800px) {
   .art-grid {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: 28px 14px;
-  }
-
-  .art-a3,
-  .art-a4 {
-    grid-column: span 2;
-    margin-top: 0;
-  }
-
-    .stagger-1,
-  .stagger-2,
-  .stagger-3 {
-    margin-top: 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px 14px;
   }
 }
 
 @media (max-width: 480px) {
   .art-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 12px;
   }
 
-  .art-a3,
-  .art-a4 {
-    grid-column: 1;
-    margin-top: 0;
-  }
-
-  .site-header {
-    padding: 22px 5%;
-  }
-
-  .logo {
-    font-size: 14px;
-  }
-
-  nav {
-    gap: 14px;
-    font-size: 10px;
-  }
-
-  main {
-    padding: 28px 5% 48px;
-  }
-
-  .section-heading {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 9px;
+  .artwork {
+    max-width: 100%;
   }
 
   .artwork-caption {
     flex-direction: column;
     gap: 4px;
-  }
-
-  footer {
-    padding: 20px 5%;
   }
 }
 
