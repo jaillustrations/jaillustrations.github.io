@@ -532,8 +532,55 @@
   </footer>
 
   <script>
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
-  </script>
+  // Update footer year
+  document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+  // Lightbox elements
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImage = document.getElementById("lightbox-image");
+  const lightboxTitle = document.getElementById("lightbox-title");
+  const closeButton = document.querySelector(".lightbox-close");
+
+  // Open lightbox when an artwork is clicked
+  document.querySelectorAll(".artwork").forEach((artwork) => {
+    artwork.addEventListener("click", () => {
+      const image = artwork.querySelector("img");
+      const title = artwork.querySelector(".artwork-caption span");
+
+      lightboxImage.src = image.src;
+      lightboxImage.alt = image.alt;
+      lightboxTitle.textContent = title.textContent;
+
+      lightbox.classList.add("active");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    });
+  });
+
+  // Close lightbox
+  function closeLightbox() {
+    lightbox.classList.remove("active");
+    lightbox.setAttribute("aria-hidden", "true");
+    lightboxImage.src = "";
+    document.body.style.overflow = "";
+  }
+
+  closeButton.addEventListener("click", closeLightbox);
+
+  // Close when clicking outside the image
+  lightbox.addEventListener("click", (event) => {
+    if (event.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  // Close with Escape key
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && lightbox.classList.contains("active")) {
+      closeLightbox();
+    }
+  });
+</script>
 </body>
 </html>
