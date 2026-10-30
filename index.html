@@ -547,11 +547,11 @@
     artwork.addEventListener("click", () => {
       const image = artwork.querySelector("img");
       const title = artwork.querySelector(".artwork-caption span");
+      const size = artwork.classList.contains("art-a3") ? "A3 print" : "A4 print";
 
       lightboxImage.src = image.src;
       lightboxImage.alt = image.alt;
-      lightboxTitle.textContent = title.textContent;
-
+lightboxTitle.textContent = title.textContent + " — " + size;
       lightbox.classList.add("active");
       lightbox.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
