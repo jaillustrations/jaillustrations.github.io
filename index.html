@@ -366,6 +366,19 @@
     max-height: 60vh;
   }
 }
+ /* PRINT AND POSTCARD LIGHTBOX SIZES */
+
+.lightbox:not(.postcard-mode) .lightbox-images > div:first-child {
+  max-width: 90%;
+}
+
+.lightbox:not(.postcard-mode) .lightbox-images > div:nth-child(2) {
+  display: none;
+}
+
+.lightbox:not(.postcard-mode) .lightbox-images img {
+  max-height: 78vh;
+}
   </style>
 </head>
 
@@ -786,19 +799,44 @@
   // Lightbox elements
   const lightbox = document.getElementById("lightbox");
   const lightboxImage = document.getElementById("lightbox-image");
+  const lightboxBackImage = document.getElementById("lightbox-back-image");
   const lightboxTitle = document.getElementById("lightbox-title");
   const closeButton = document.querySelector(".lightbox-close");
 
-  // Open lightbox when an artwork is clicked
+  // Open print lightbox
   document.querySelectorAll(".artwork").forEach((artwork) => {
     artwork.addEventListener("click", () => {
       const image = artwork.querySelector("img");
       const title = artwork.querySelector(".artwork-caption span");
-      const size = artwork.classList.contains("art-a3") ? "A3 print" : "A4 print";
+      const size = artwork.classList.contains("art-a3")
+        ? "A3 print"
+        : "A4 print";
+
+      lightbox.classList.remove("postcard-mode");
 
       lightboxImage.src = image.src;
       lightboxImage.alt = image.alt;
-lightboxTitle.textContent = title.textContent + " — " + size;
+      lightboxTitle.textContent = title.textContent + " — " + size;
+
+      lightbox.classList.add("active");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    });
+  });
+
+  // Open postcard lightbox
+  document.querySelectorAll(".postcard-artwork").forEach((postcard) => {
+    postcard.addEventListener("click", () => {
+      const image = postcard.querySelector("img");
+      const title = postcard.querySelector(".artwork-caption span");
+
+      lightboxImage.src = image.src;
+      lightboxImage.alt = image.alt;
+
+      lightboxBackImage.src = "postcards/back-postcard.jpg";
+      lightboxTitle.textContent = title.textContent;
+
+      lightbox.classList.add("postcard-mode");
       lightbox.classList.add("active");
       lightbox.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
@@ -807,7 +845,7 @@ lightboxTitle.textContent = title.textContent + " — " + size;
 
   // Close lightbox
   function closeLightbox() {
-    lightbox.classList.remove("active");
+    lightbox.classList.remove("active", "postcard-mode");
     lightbox.setAttribute("aria-hidden", "true");
     lightboxImage.src = "";
     document.body.style.overflow = "";
@@ -815,7 +853,7 @@ lightboxTitle.textContent = title.textContent + " — " + size;
 
   closeButton.addEventListener("click", closeLightbox);
 
-  // Close when clicking outside the image
+  // Close when clicking outside the content
   lightbox.addEventListener("click", (event) => {
     if (event.target === lightbox) {
       closeLightbox();
