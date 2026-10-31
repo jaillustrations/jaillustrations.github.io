@@ -302,11 +302,13 @@ grid-auto-flow: row dense;
   margin: 0 auto;
 }
 
-.lightbox-content p {
+.lightbox-content > #lightbox-title {
+  display: block;
   color: #f6f3ec;
   font-size: 13px;
   letter-spacing: 0.08em;
-  margin-top: 16px;
+  margin: 16px 0 0;
+  min-height: 18px;
 }
 
 .lightbox-close {
