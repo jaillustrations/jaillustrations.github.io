@@ -340,7 +340,45 @@ grid-auto-flow: row dense;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 25px;
+}
+
+.postcard-flipper {
+  width: min(80vw, 500px);
+  perspective: 1000px;
+}
+
+.postcard-flipper-inner {
+  position: relative;
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.7s ease;
+}
+
+.postcard-flipper-inner.flipped {
+  transform: rotateY(180deg);
+}
+
+.postcard-face {
+  width: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.postcard-front {
+  position: relative;
+}
+
+.postcard-back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+}
+
+.postcard-face img {
+  display: block;
+  width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
 }
 
 .lightbox-images > div {
