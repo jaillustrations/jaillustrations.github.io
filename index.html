@@ -336,95 +336,65 @@ grid-auto-flow: row dense;
   height: auto;
   object-fit: contain;
 }
- .lightbox-images {
+ /* LIGHTBOX IMAGE LAYOUT */
+
+.lightbox-images {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.postcard-flipper {
-  width: min(80vw, 500px);
-  perspective: 1000px;
-}
+/* POSTCARD MOCKUP */
 
-.postcard-flipper-inner {
+.postcard-mockup {
   position: relative;
-  width: 100%;
-  transform-style: preserve-3d;
-  transition: transform 0.7s ease;
-}
-
-.postcard-flipper-inner.flipped {
-  transform: rotateY(180deg);
-}
-
-.postcard-face {
-  width: 100%;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
+  width: min(80vw, 500px);
 }
 
 .postcard-front {
   position: relative;
+  z-index: 2;
+  width: 100%;
+  transform: translateX(-12px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
 }
 
 .postcard-back {
   position: absolute;
-  inset: 0;
-  transform: rotateY(180deg);
+  z-index: 1;
+  top: 12px;
+  left: 18px;
+  width: 100%;
+  transform: translateX(12px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
-.postcard-face img {
+.postcard-mockup img {
   display: block;
   width: 100%;
   max-height: 70vh;
   object-fit: contain;
 }
 
-.lightbox-images > div {
-  max-width: 42%;
-}
+/* PRINT POPUPS */
 
-.lightbox-images img {
-  max-width: 100%;
-  max-height: 70vh;
+.lightbox:not(.postcard-mode) .postcard-mockup {
   width: auto;
-  height: auto;
-  object-fit: contain;
 }
 
-.lightbox-side-label {
-  color: #f6f3ec;
-  font-size: 10px;
-  letter-spacing: 0.15em;
-  margin-bottom: 10px;
+.lightbox:not(.postcard-mode) .postcard-front {
+  transform: none;
+  box-shadow: none;
 }
 
-@media (max-width: 600px) {
-  .lightbox-images {
-    gap: 12px;
-  }
-
-  .lightbox-images > div {
-    max-width: 48%;
-  }
-
-  .lightbox-images img {
-    max-height: 60vh;
-  }
-}
- /* PRINT AND POSTCARD LIGHTBOX SIZES */
-
-.lightbox:not(.postcard-mode) .lightbox-images > div:first-child {
-  max-width: 90%;
-}
-
-.lightbox:not(.postcard-mode) .lightbox-images > div:nth-child(2) {
-  display: none;
-}
-
-.lightbox:not(.postcard-mode) .lightbox-images img {
+.lightbox:not(.postcard-mode) .postcard-front img {
+  width: auto;
+  max-width: 90vw;
   max-height: 78vh;
+}
+
+.lightbox:not(.postcard-mode) .postcard-back {
+  display: none;
 }
  .inspiration-gallery {
   max-width: 550px;
