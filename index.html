@@ -1115,6 +1115,33 @@ grid-auto-flow: row dense;
   const lightboxBackImage = document.getElementById("lightbox-back-image");
   const lightboxTitle = document.getElementById("lightbox-title");
   const closeButton = document.querySelector(".lightbox-close");
+    // Contact popup elements
+const contactPopup = document.getElementById("contact-popup");
+const openContact = document.getElementById("open-contact");
+const closeContact = document.getElementById("close-contact");
+
+// Open contact popup
+openContact.addEventListener("click", () => {
+  contactPopup.classList.add("active");
+  contactPopup.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+});
+
+// Close contact popup
+function closeContactPopup() {
+  contactPopup.classList.remove("active");
+  contactPopup.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+}
+
+closeContact.addEventListener("click", closeContactPopup);
+
+// Close when clicking outside the form
+contactPopup.addEventListener("click", (event) => {
+  if (event.target === contactPopup) {
+    closeContactPopup();
+  }
+});
     const postcardMockup = document.querySelector(".postcard-mockup");
 
   // Open print lightbox
@@ -1198,9 +1225,15 @@ grid-auto-flow: row dense;
 
   // Close with Escape key
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && lightbox.classList.contains("active")) {
-      closeLightbox();
-    }
+   if (event.key === "Escape") {
+  if (lightbox.classList.contains("active")) {
+    closeLightbox();
+  }
+
+  if (contactPopup.classList.contains("active")) {
+    closeContactPopup();
+  }
+}
   });
 </script>
 </body>
