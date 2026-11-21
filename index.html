@@ -420,7 +420,53 @@ grid-auto-flow: row dense;
 }
   
 
+/* GET IN TOUCH */
 
+.contact-section {
+  padding: 80px 20px 100px;
+  text-align: center;
+}
+
+.contact-options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 70px;
+  margin-top: 35px;
+}
+
+.contact-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  background: none;
+  border: none;
+  padding: 10px;
+  color: #292923;
+  text-decoration: none;
+  font: inherit;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.contact-option:hover {
+  color: #c66f43;
+  transform: translateY(-3px);
+}
+
+.contact-icon {
+  font-size: 30px;
+  line-height: 1;
+}
+
+@media (max-width: 480px) {
+  .contact-options {
+    gap: 45px;
+  }
+}
   </style>
 </head>
 
