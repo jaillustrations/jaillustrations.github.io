@@ -907,6 +907,7 @@ grid-auto-flow: row dense;
   const lightboxBackImage = document.getElementById("lightbox-back-image");
   const lightboxTitle = document.getElementById("lightbox-title");
   const closeButton = document.querySelector(".lightbox-close");
+    const postcardMockup = document.querySelector(".postcard-mockup");
 
   // Open print lightbox
   document.querySelectorAll(".artwork").forEach((artwork) => {
@@ -947,10 +948,32 @@ grid-auto-flow: row dense;
       document.body.style.overflow = "hidden";
     });
   });
+  // Move postcard back with mouse or touch
+  postcardMockup.addEventListener("pointermove", (event) => {
+    if (event.pointerType !== "mouse") return;
 
+    const bounds = postcardMockup.getBoundingClientRect();
+    const mousePosition = event.clientX - bounds.left;
+
+    postcardMockup.classList.toggle(
+      "show-back",
+      mousePosition > bounds.width / 2
+    );
+  });
+
+  postcardMockup.addEventListener("pointerleave", () => {
+    postcardMockup.classList.remove("show-back");
+  });
+
+  postcardMockup.addEventListener("click", (event) => {
+    if (event.pointerType === "touch") {
+      postcardMockup.classList.toggle("show-back");
+    }
+  });
   // Close lightbox
   function closeLightbox() {
     lightbox.classList.remove("active", "postcard-mode");
+    postcardMockup.classList.remove("show-back");
     lightbox.setAttribute("aria-hidden", "true");
     lightboxImage.src = "";
     document.body.style.overflow = "";
