@@ -358,6 +358,11 @@ grid-auto-flow: row dense;
   width: 100%;
   transform: translateX(-12px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  transition: transform 0.4s ease;
+}
+
+.postcard-mockup.show-back .postcard-front {
+  transform: translate(-85%, 10px) rotate(-8deg);
 }
 
 .postcard-back {
