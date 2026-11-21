@@ -1205,6 +1205,41 @@ contactPopup.addEventListener("click", (event) => {
       postcardMockup.classList.toggle("show-back");
     }
   });
+      // Send contact form using Formspree
+  const contactForm = document.getElementById("contact-form");
+  const contactStatus = document.getElementById("contact-status");
+
+  contactForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const submitButton = contactForm.querySelector(".contact-submit");
+    submitButton.disabled = true;
+    submitButton.textContent = "SENDING...";
+
+    contactStatus.textContent = "";
+
+    try {
+      const response = await fetch("https://formspree.io/f/mnpdbvje", {
+        method: "POST",
+        body: new FormData(contactForm),
+        headers: {
+          Accept: "application/json"
+        }
+      });
+
+      if (response.ok) {
+        contactForm.reset();
+        contactStatus.textContent = "Thank you! Your message has been sent.";
+      } else {
+        contactStatus.textContent = "Something went wrong. Please try again.";
+      }
+    } catch (error) {
+      contactStatus.textContent = "Unable to send your message. Please try again.";
+    }
+
+    submitButton.disabled = false;
+    submitButton.textContent = "SEND MESSAGE";
+  });
   // Close lightbox
   function closeLightbox() {
     lightbox.classList.remove("active", "postcard-mode");
