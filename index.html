@@ -743,6 +743,39 @@ grid-auto-flow: row dense;
   grid-column: span 1;
 }
 
+.travel-gallery {
+  grid-template-columns: repeat(6, 1fr);
+  column-gap: 22px;
+  row-gap: 45px;
+}
+
+.gallery-img-large {
+  grid-column: span 3;
+}
+
+.gallery-img-square {
+  grid-column: span 3;
+  margin-top: 55px;
+}
+
+.gallery-img-tall {
+  grid-column: span 2;
+}
+
+.travel-gallery img:nth-child(3) {
+  margin-top: 35px;
+}
+
+.travel-gallery img:nth-child(4) {
+  grid-column: 2 / span 3;
+  margin-top: 20px;
+}
+
+.travel-gallery img:nth-child(5) {
+  grid-column: 5 / span 2;
+  margin-top: 70px;
+}
+
   </style>
 </head>
 
