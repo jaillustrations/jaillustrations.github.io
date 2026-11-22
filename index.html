@@ -733,31 +733,28 @@ grid-auto-flow: row dense;
   height: auto;
 }
 
-.gallery-img-large {
-  grid-column: span 3;
+.travel-gallery img:nth-child(1) {
+  grid-column: 2 / span 2;
 }
 
-.gallery-img-square {
-  grid-column: span 3;
-  margin-top: 10px;
-}
-
-.gallery-img-tall {
-  grid-column: span 2;
+.travel-gallery img:nth-child(2) {
+  grid-column: 4 / span 2;
+  margin-top: 15px;
 }
 
 .travel-gallery img:nth-child(3) {
-  margin-top: 8px;
+  grid-column: 1 / span 2;
+  margin-top: 10px;
 }
 
 .travel-gallery img:nth-child(4) {
-  grid-column: 2 / span 3;
+  grid-column: 3 / span 2;
   margin-top: 5px;
 }
 
 .travel-gallery img:nth-child(5) {
   grid-column: 5 / span 2;
-  margin-top: 12px;
+  margin-top: 15px;
 }
 
 /* Wider, more compact prints gallery */
