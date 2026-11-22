@@ -795,7 +795,12 @@ grid-auto-flow: row dense;
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+/* Same overall width for prints and postcards */
 
+#prints .art-grid,
+.postcard-grid {
+  max-width: 1160px;
+}
   </style>
 </head>
 
