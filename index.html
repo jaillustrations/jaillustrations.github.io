@@ -716,6 +716,33 @@ grid-auto-flow: row dense;
   max-width: 320px;
 }
 
+.travel-gallery {
+  max-width: 900px;
+  margin: 70px auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 35px 25px;
+  align-items: start;
+}
+
+.travel-gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.gallery-img-large {
+  grid-column: span 2;
+}
+
+.gallery-img-square {
+  grid-column: span 1;
+}
+
+.gallery-img-tall {
+  grid-column: span 1;
+}
+
   </style>
 </head>
 
