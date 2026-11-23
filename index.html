@@ -614,9 +614,9 @@ grid-auto-flow: row dense;
 
 .about-hero {
   position: relative;
-  width: 100%;
-  max-width: 1700px;
-  height: 480px;
+  width: calc(100vw - 80px);
+  max-width: 1800px;
+  height: 380px;
   margin: 0 auto;
   overflow: hidden;
 }
@@ -625,10 +625,10 @@ grid-auto-flow: row dense;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   display: block;
-    opacity: 0.88;
+  opacity: 0.88;
 }
-
 .about-hero-overlay {
   position: absolute;
   left: 50%;
