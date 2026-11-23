@@ -681,8 +681,13 @@ grid-auto-flow: row dense;
 }
 
 .about-hero {
-  max-width: 900px;
+  position: relative;
+  width: calc(100vw - 60px);
+  max-width: 1800px;
   height: auto;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
 }
 
 .about-hero img {
