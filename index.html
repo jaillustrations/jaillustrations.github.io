@@ -1521,6 +1521,18 @@ contactPopup.addEventListener("click", (event) => {
       document.body.style.overflow = "hidden";
     });
   });
+    // Open sticker lightbox
+document.querySelectorAll(".sticker-grid img").forEach((image) => {
+  image.addEventListener("click", () => {
+    lightboxImage.src = image.src;
+    lightboxImage.alt = image.alt;
+    lightboxTitle.textContent = image.alt;
+
+    lightbox.classList.add("active");
+    lightbox.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  });
+});
   // Move postcard back with mouse or touch
   postcardMockup.addEventListener("pointermove", (event) => {
     if (event.pointerType !== "mouse") return;
